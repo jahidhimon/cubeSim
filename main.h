@@ -9,9 +9,9 @@
 #define TITLE "THE ROTATING CUBE"
 
 struct ColorRGB {
-	double R;
-	double G;
-	double B;
+	float R;
+	float G;
+	float B;
 };
 
 struct Point3D {
@@ -22,6 +22,6 @@ struct Point3D {
 
 void display();
 void display_init();
-void drawCube(size_t size);
-void drawQuad(size_t size, struct Point3D points[], struct ColorRGB color);
+void drawCube(int size);
+void drawQuad(int size, struct Point3D points[], struct ColorRGB color);
 #endif // MAIN_H
