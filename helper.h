@@ -6,9 +6,11 @@
 #define WINDOW_WIDTH  600
 #define WINDOW_HEIGHT 500
 
+#define ROTATION_ANGLE 2
+
 #define TITLE "THE ROTATING CUBE"
 #define INSTRUCTION \
-	"+/-: SPEED   arrow_keys: ROTATE   space: PAUSE/RESUME   S: SKELETON   Q: QUIT"
+	"+/-: SPEED   w,a,s,d: ROTATE   space: PAUSE/RESUME   S: SKELETON   Q: QUIT"
 
 struct ColorRGB {
 	float R;
@@ -27,4 +29,5 @@ void display_init();
 void drawCube(int size);
 void drawQuad(int size, struct Point3D points[], struct ColorRGB color);
 void displayString(float x, float y, float z, char *string, int is_big);
+void handleKeyboard(unsigned char ch, int x, int y);
 #endif // HELPER_H

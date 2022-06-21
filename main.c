@@ -49,9 +49,9 @@ int main(int argc, char *argv[]) {
   glEnable(GL_DEPTH_TEST);
   glutDisplayFunc(display);
   glutIdleFunc(display);
-
+	glutKeyboardFunc(handleKeyboard);
   display_init();
-
+	
   glutMainLoop();
   return 0;
 }
@@ -122,5 +122,66 @@ void displayString(float x, float y, float z, char *string, int is_big) {
   for (size_t i = 0; string[i] != 0; i++) {
     glutBitmapCharacter(
         is_big ? GLUT_BITMAP_HELVETICA_18 : GLUT_BITMAP_HELVETICA_12, string[i]);
+  }
+}
+
+
+void handleKeyboard(unsigned char key, int x, int y) {
+  switch (key) {
+  // map 'W' to increment x-axis rotation angle
+  case 'W':
+    aX += ROTATION_ANGLE;
+    if (aX >= 359) {
+      aX = 0;
+    }
+    break;
+  // map 'S' to decrement x-axis rotation angle
+  case 's':
+  case 'S':
+    aX -= ROTATION_ANGLE;
+    if (aX <= 0) {
+      aX = 359;
+    }
+    break;
+  // map 'A' to increment z-axis rotation angle
+  case 'a':
+  case 'A':
+    aZ += ROTATION_ANGLE;
+    if (aZ >= 359) {
+      aZ = 0;
+    }
+    break;
+  // map 'D' to decrement z-axis rotation angle
+  case 'd':
+  case 'D':
+    aZ -= ROTATION_ANGLE;
+    if (aZ <= 0) {
+      aZ = 359;
+    }
+    break;
+  // map '+' to increment y-axis rotation speed
+  case '+':
+    aY += 1;
+    if (aY >= 360) {
+      aY = 0;
+    }
+    break;
+	// map '-' to decrement y-axis roation speed
+	case '-':
+		aY -= 1;
+		if (aY <= 0) {
+			aY = 360;
+		}
+		break;
+  // map 'SPACE' to toggle stop y-axis rotation switch
+  case 0x20:
+    stop ^= 1;
+    break;
+  // map 'Q' to exit
+  case 0x1B:
+  case 'q':
+  case 'Q':
+    exit(0);
+    break;
   }
 }
