@@ -10,7 +10,7 @@
 
 #define TITLE "THE ROTATING CUBE"
 #define INSTRUCTION \
-	"+/-: SPEED   w,a,s,d: ROTATE   space: PAUSE/RESUME   S: SKELETON   Q: QUIT"
+	"+/-: SPEED   w,a,s,d: ROTATE   space: PAUSE/RESUME   k: SKELETON   q: QUIT"
 
 struct ColorRGB {
 	float R;

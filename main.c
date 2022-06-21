@@ -107,7 +107,7 @@ void drawCube(GLint size) {
 
 void drawQuad(GLint size, struct Point3D points[], struct ColorRGB color) {
   GLint i;
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  glPolygonMode(GL_FRONT_AND_BACK, frame? GL_LINE: GL_FILL);
   glColor4f(color.R, color.G, color.B, 1);
   glBegin(GL_QUADS);
   for (short i = 0; i < 4; i++) {
@@ -173,6 +173,11 @@ void handleKeyboard(unsigned char key, int x, int y) {
 			aY = 360;
 		}
 		break;
+  // map 'k' to toggle frame draw switch
+  case 'k':
+  case 'K':
+    frame ^= 1;
+    break;
   // map 'SPACE' to toggle stop y-axis rotation switch
   case 0x20:
     stop ^= 1;
